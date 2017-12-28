@@ -92,8 +92,8 @@ while True:
             cv2.putText(frame, label, (startX, y),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORS[idx], 2)
 
-            if CLASSES[idx] == 'person' or 'dog' or 'cat':
-                if counter:
+            # if CLASSES[idx] == 'person' or 'dog' or 'cat':
+                # if counter:
                     # detected.ping(CLASSES[idx], frame)
 
     counter = False
