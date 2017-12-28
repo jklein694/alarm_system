@@ -11,7 +11,7 @@ from imutils.video import FPS
 from imutils.video import VideoStream
 
 # import the necessary packages
-import detection_alerts as detected
+# import detection_alerts as detected
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
@@ -94,7 +94,7 @@ while True:
 
             if CLASSES[idx] == 'person' or 'dog' or 'cat':
                 if counter:
-                    detected.ping(CLASSES[idx], frame)
+                    # detected.ping(CLASSES[idx], frame)
 
     counter = False
     # show the output frame
