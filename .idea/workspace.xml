@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eaff6ea3-f7a4-4d67-a9e5-ca5a511a7be7" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/real_time_object_detection.py" afterPath="$PROJECT_DIR$/real_time_object_detection.py" />
     </list>
@@ -18,8 +17,8 @@
       <file leaf-file-name="real_time_object_detection.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/real_time_object_detection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="102" column="4" lean-forward="true" selection-start-line="102" selection-start-column="4" selection-end-line="102" selection-end-column="4" />
+            <state relative-caret-position="194">
+              <caret line="59" column="52" lean-forward="false" selection-start-line="59" selection-start-column="52" selection-end-line="59" selection-end-column="52" />
               <folding>
                 <element signature="e#132#147#0" expanded="true" />
               </folding>
@@ -229,7 +228,28 @@
       <option name="project" value="LOCAL" />
       <updated>1514427103385</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="resize window">
+      <created>1514427475203</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1514427475203</updated>
+    </task>
+    <task id="LOCAL-00006" summary="resize window and image">
+      <created>1514427621373</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1514427621373</updated>
+    </task>
+    <task id="LOCAL-00007" summary="resize window and image">
+      <created>1514427751529</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1514427751529</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -265,7 +285,9 @@
     <MESSAGE value="play sound after 15 seconds" />
     <MESSAGE value="removing sound" />
     <MESSAGE value="test camera" />
-    <option name="LAST_COMMIT_MESSAGE" value="test camera" />
+    <MESSAGE value="resize window" />
+    <MESSAGE value="resize window and image" />
+    <option name="LAST_COMMIT_MESSAGE" value="resize window and image" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -307,12 +329,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/real_time_object_detection.py</url>
-          <line>101</line>
+          <line>102</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/real_time_object_detection.py</url>
-          <line>110</line>
+          <line>111</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
@@ -363,8 +385,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/real_time_object_detection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="102" column="4" lean-forward="true" selection-start-line="102" selection-start-column="4" selection-end-line="102" selection-end-column="4" />
+        <state relative-caret-position="194">
+          <caret line="59" column="52" lean-forward="false" selection-start-line="59" selection-start-column="52" selection-end-line="59" selection-end-column="52" />
           <folding>
             <element signature="e#132#147#0" expanded="true" />
           </folding>
