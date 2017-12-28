@@ -9,16 +9,14 @@ import imutils
 import numpy as np
 from imutils.video import FPS
 from imutils.video import VideoStream
+import matplotlib.pyplot as plt
 
 # import the necessary packages
 # import detection_alerts as detected
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
-# ap.add_argument("-p", "--prototxt", required=False,
-#                 help="path to Caffe 'deploy' prototxt file")
-# ap.add_argument("-m", "--model", required=False,
-#                 help="path to Caffe pre-trained model")
+
 ap.add_argument("-c", "--confidence", type=float, default=0.2,
                 help="minimum probability to filter weak detections")
 args = vars(ap.parse_args())
@@ -32,7 +30,12 @@ CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat",
 
 COLORS = np.random.uniform(0, 255, size=(len(CLASSES), 3))
 
-counter = True
+width_loc = {}
+height_loc = {}
+
+for item in CLASSES:
+    width_loc[item] = []
+    height_loc[item] = []
 
 # load our serialized model from disk
 print("[INFO] loading model...")
@@ -64,7 +67,6 @@ while True:
     net.setInput(blob)
     detections = net.forward()
 
-
     # loop over the detections
     for i in np.arange(0, detections.shape[2]):
         # extract the confidence (i.e., probability) associated with
@@ -81,25 +83,30 @@ while True:
             idx = int(detections[0, 0, i, 1])
             # set up alert for Person, Dog, Cat
             box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])
+
             (startX, startY, endX, endY) = box.astype("int")
+
+
+            width = int((endX + startX) / 2)
+            height = int((endY + startY) / 2)
+
+            center = (width, height)
 
             # draw the prediction on the frame
             label = "{}: {:.2f}%".format(CLASSES[idx],
                                          confidence * 100)
             cv2.rectangle(frame, (startX, startY), (endX, endY),
                           COLORS[idx], 2)
+            cv2.circle(frame, (width, height), 2, COLORS[idx], 2)
             y = startY - 15 if startY - 15 > 15 else startY + 15
             cv2.putText(frame, label, (startX, y),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORS[idx], 2)
 
-            # if CLASSES[idx] == 'person' or 'dog' or 'cat':
-                # if counter:
-                    # detected.ping(CLASSES[idx], frame)
+            if CLASSES[idx] == 'person':
+                width_loc[CLASSES[idx]].append(width)
+                height_loc[CLASSES[idx]].append(height)
 
-    counter = False
     # show the output frame
-    cv2.resizeWindow('Frame', 600, 600)
-    cv2.resize(frame, (600, 600))
     cv2.imshow("Frame", frame)
 
     key = cv2.waitKey(1) & 0xFF
@@ -118,14 +125,48 @@ while True:
         counter = True
         start = time.time()
 
-    print(loop_time, '   ', counter)
-
+    print(loop_time)
 
 
 # stop the timer and display FPS information
 fps.stop()
 print("[INFO] elapsed time: {:.2f}".format(fps.elapsed()))
 print("[INFO] approx. FPS: {:.2f}".format(fps.fps()))
+
+direction = []
+
+
+for n in range(len(width_loc['person'])):
+    try:
+        slope = width_loc['person'][n + 10] - width_loc['person'][n]
+        direction.append(slope)
+    except:
+        None
+# For item i in a range that is a length of l,
+def create_chunks(l, n):
+    # For item i in a range that is a length of l,
+    for i in range(0, len(l), n):
+        # Create an index range for l of n items:
+        yield l[i:i+n]
+chunks = create_chunks(direction, 10)
+
+average_slope = []
+
+for chunk in chunks:
+    average_slope.append(np.mean(chunk))
+
+
+
+print(average_slope)
+for movement in average_slope:
+    if movement <= -20:
+        print('Moving Right')
+    if movement >= 20:
+        print('Moving Left')
+
+
+plt.plot(average_slope)
+plt.show()
 
 # do a bit of cleanup
 cv2.destroyAllWindows()
