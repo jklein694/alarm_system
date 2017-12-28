@@ -32,8 +32,6 @@ CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat",
 
 COLORS = np.random.uniform(0, 255, size=(len(CLASSES), 3))
 
-HUMAN = 'person'
-
 counter = True
 
 # load our serialized model from disk
@@ -46,11 +44,11 @@ print("[INFO] starting video stream...")
 vs = VideoStream(src=0).start()
 time.sleep(2.0)
 fps = FPS().start()
-print('start')
+
+start = time.time()
 
 # loop over the frames from the video stream
 while True:
-    print('true')
     # grab the frame from the threaded video stream and resize it
     # to have a maximum width of 400 pixels
     frame = vs.read()
@@ -66,7 +64,6 @@ while True:
     net.setInput(blob)
     detections = net.forward()
 
-    print(np.arange(0, detections.shape[2]))
 
     # loop over the detections
     for i in np.arange(0, detections.shape[2]):
@@ -82,7 +79,6 @@ while True:
             # `detections`, then compute the (x, y)-coordinates of
             # the bounding box for the object
             idx = int(detections[0, 0, i, 1])
-            print(' i: ', i, '\n', 'idx: ', idx)
             # set up alert for Person, Dog, Cat
             box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])
             (startX, startY, endX, endY) = box.astype("int")
@@ -99,8 +95,8 @@ while True:
             if CLASSES[idx] == 'person' or 'dog' or 'cat':
                 if counter:
                     detected.ping(CLASSES[idx], frame)
-    counter = False
 
+    counter = False
     # show the output frame
     cv2.imshow("Frame", frame)
     key = cv2.waitKey(1) & 0xFF
@@ -111,7 +107,17 @@ while True:
 
     # update the FPS counter
     fps.update()
-    print('update')
+
+    end = time.time()
+    loop_time = end - start
+
+    if loop_time > 15:
+        counter = True
+        start = time.time()
+
+    print(loop_time, '   ', counter)
+
+
 
 # stop the timer and display FPS information
 fps.stop()
