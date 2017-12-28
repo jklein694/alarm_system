@@ -98,8 +98,8 @@ while True:
 
     counter = False
     # show the output frame
-    cv2.resizeWindow('Frame', 1200, 1000)
-    cv2.resize(frame, (1200, 1000))
+    cv2.resizeWindow('Frame', 900, 1000)
+    cv2.resize(frame, (600, 600))
     cv2.imshow("Frame", frame)
 
     key = cv2.waitKey(1) & 0xFF
