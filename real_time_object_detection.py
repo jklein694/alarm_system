@@ -184,7 +184,8 @@ while True:
 
                 cv2.putText(frame, speed_label, (startX, y + 20),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORS[idx], 2)
-
+            else:
+                None
 
 
     # show the output frame
@@ -206,7 +207,7 @@ while True:
         counter = True
         start = time.time()
 
-    print(loop_time)
+
 
 # stop the timer and display FPS information
 fps.stop()
@@ -215,12 +216,12 @@ print("[INFO] approx. FPS: {:.2f}".format(fps.fps()))
 
 direction = []
 
-plt.plot(average_slope)
-plt.show()
-plt.plot(average_area_slope, label='area change')
-plt.plot(lng_move_list, label='area change slope')
-plt.legend()
-plt.show()
+# plt.plot(average_slope)
+# plt.show()
+# plt.plot(average_area_slope, label='area change')
+# plt.plot(lng_move_list, label='area change slope')
+# plt.legend()
+# plt.show()
 
 # do a bit of cleanup
 cv2.destroyAllWindows()
