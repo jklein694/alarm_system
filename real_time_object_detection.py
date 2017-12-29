@@ -1,15 +1,16 @@
 # USAGE
 # python3 real_time_object_detection.py --prototxt MobileNetSSD_deploy.prototxt.txt --model MobileNetSSD_deploy.caffemodel
-
 import argparse
 import time
 
 import cv2
 import imutils
+import matplotlib.pyplot as plt
 import numpy as np
 from imutils.video import FPS
 from imutils.video import VideoStream
-import matplotlib.pyplot as plt
+
+import create_chunks as cc
 
 # import the necessary packages
 # import detection_alerts as detected
@@ -67,6 +68,8 @@ while True:
     net.setInput(blob)
     detections = net.forward()
 
+    direction = []
+
     # loop over the detections
     for i in np.arange(0, detections.shape[2]):
         # extract the confidence (i.e., probability) associated with
@@ -86,7 +89,6 @@ while True:
 
             (startX, startY, endX, endY) = box.astype("int")
 
-
             width = int((endX + startX) / 2)
             height = int((endY + startY) / 2)
 
@@ -105,6 +107,36 @@ while True:
             if CLASSES[idx] == 'person':
                 width_loc[CLASSES[idx]].append(width)
                 height_loc[CLASSES[idx]].append(height)
+
+            for n in range(len(width_loc['person'])):
+                try:
+                    slope = width_loc['person'][n + 10] - width_loc['person'][n]
+                    direction.append(slope)
+                except:
+                    None
+
+            chunks = cc.create_chunks(direction, 10)
+
+            average_slope = []
+            movement = 0
+            for chunk in chunks:
+                average_slope.append(np.mean(chunk))
+                movement = np.mean(chunk)
+
+            speed_label = "{}: {:.2f}".format('Speed: ', movement)
+
+            if movement <= -20:
+                direction_label = 'Moving Right'
+            elif movement >= 20:
+                direction_label = 'Moving Left'
+            else:
+                direction_label = ''
+
+            cv2.putText(frame, direction_label, (startX + 150, y - 20),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORS[idx], 2)
+            cv2.putText(frame, speed_label, (startX + 150, y),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORS[idx], 2)
+            print(direction_label)
 
     # show the output frame
     cv2.imshow("Frame", frame)
@@ -127,43 +159,12 @@ while True:
 
     print(loop_time)
 
-
 # stop the timer and display FPS information
 fps.stop()
 print("[INFO] elapsed time: {:.2f}".format(fps.elapsed()))
 print("[INFO] approx. FPS: {:.2f}".format(fps.fps()))
 
 direction = []
-
-
-for n in range(len(width_loc['person'])):
-    try:
-        slope = width_loc['person'][n + 10] - width_loc['person'][n]
-        direction.append(slope)
-    except:
-        None
-# For item i in a range that is a length of l,
-def create_chunks(l, n):
-    # For item i in a range that is a length of l,
-    for i in range(0, len(l), n):
-        # Create an index range for l of n items:
-        yield l[i:i+n]
-chunks = create_chunks(direction, 10)
-
-average_slope = []
-
-for chunk in chunks:
-    average_slope.append(np.mean(chunk))
-
-
-
-print(average_slope)
-for movement in average_slope:
-    if movement <= -20:
-        print('Moving Right')
-    if movement >= 20:
-        print('Moving Left')
-
 
 plt.plot(average_slope)
 plt.show()

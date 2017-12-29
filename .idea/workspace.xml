@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eaff6ea3-f7a4-4d67-a9e5-ca5a511a7be7" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/detection_alerts.py" afterPath="$PROJECT_DIR$/create_chunks.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/real_time_object_detection.py" afterPath="$PROJECT_DIR$/real_time_object_detection.py" />
     </list>
@@ -17,10 +18,10 @@
       <file leaf-file-name="real_time_object_detection.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/real_time_object_detection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="168" column="10" lean-forward="true" selection-start-line="168" selection-start-column="10" selection-end-line="168" selection-end-column="10" />
+            <state relative-caret-position="382">
+              <caret line="139" column="0" lean-forward="true" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
               <folding>
-                <element signature="e#132#147#0" expanded="true" />
+                <element signature="e#131#146#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -49,14 +50,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="detection_alerts.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/detection_alerts.py">
+      <file leaf-file-name="create_chunks.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/create_chunks.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="16">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
+              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="5" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -93,9 +92,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/detection_alerts.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/detection_alerts.py" />
         <option value="$PROJECT_DIR$/real_time_object_detection.py" />
       </list>
     </option>
@@ -163,7 +162,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="real-time-object-detection" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/detection_alerts.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/create_chunks.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -273,7 +272,14 @@
       <option name="project" value="LOCAL" />
       <updated>1514427990362</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="adding directional movement">
+      <created>1514503528090</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1514503528090</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -311,7 +317,8 @@
     <MESSAGE value="test camera" />
     <MESSAGE value="resize window" />
     <MESSAGE value="resize window and image" />
-    <option name="LAST_COMMIT_MESSAGE" value="resize window and image" />
+    <MESSAGE value="adding directional movement" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding directional movement" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -328,18 +335,16 @@
         <state relative-caret-position="1712">
           <caret line="107" column="23" lean-forward="true" selection-start-line="107" selection-start-column="23" selection-end-line="107" selection-end-column="23" />
           <folding>
-            <element signature="e#132#147#0" expanded="true" />
+            <element signature="e#131#146#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/detection_alerts.py">
+    <entry file="file://$PROJECT_DIR$/create_chunks.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -378,16 +383,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/detection_alerts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -408,12 +403,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/create_chunks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="5" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/real_time_object_detection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="168" column="10" lean-forward="true" selection-start-line="168" selection-start-column="10" selection-end-line="168" selection-end-column="10" />
+        <state relative-caret-position="382">
+          <caret line="139" column="0" lean-forward="true" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
           <folding>
-            <element signature="e#132#147#0" expanded="true" />
+            <element signature="e#131#146#0" expanded="true" />
           </folding>
         </state>
       </provider>
