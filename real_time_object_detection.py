@@ -96,7 +96,7 @@ while True:
 
             (startX, startY, endX, endY) = box.astype("int")
 
-            if CLASSES[idx] == 'person' or 'dog':
+            if idx == 15:
                 width = int((endX + startX) / 2)
                 height = int((endY + startY) / 2)
 
