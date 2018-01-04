@@ -51,9 +51,16 @@ net = cv2.dnn.readNetFromCaffe('MobileNetSSD_deploy.prototxt.txt', 'MobileNetSSD
 # initialize the video stream, allow the cammera sensor to warmup,
 # and initialize the FPS counter
 print("[INFO] starting video stream...")
-vs = VideoStream(src=0).start()
-time.sleep(2.0)
-fps = FPS().start()
+try:
+    vs = VideoStream(src=0).start()
+    time.sleep(2.0)
+    fps = FPS().start()
+except:
+    print('Attempting to connect with camera')
+    time.sleep(2.0)
+    vs = VideoStream(src=0).start()
+    time.sleep(2.0)
+    fps = FPS().start()
 
 start = time.time()
 
