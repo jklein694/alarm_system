@@ -103,6 +103,14 @@ while True:
 
             (startX, startY, endX, endY) = box.astype("int")
 
+            label = "{}: {:.2f}%".format(CLASSES[idx],
+                                         confidence * 100)
+            cv2.rectangle(frame, (startX, startY), (endX, endY),
+                          COLORS[idx], 2)
+            y = startY - 15 if startY - 15 > 15 else startY + 15
+            cv2.putText(frame, label, (startX, y),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORS[idx], 2)
+
             if idx == 15:
                 width = int((endX + startX) / 2)
                 height = int((endY + startY) / 2)
@@ -111,15 +119,19 @@ while True:
 
                 center = (width, height)
 
-                # draw the prediction on the frame
-                label = "{}: {:.2f}%".format(CLASSES[idx],
-                                             confidence * 100)
-                cv2.rectangle(frame, (startX, startY), (endX, endY),
-                              COLORS[idx], 2)
                 cv2.circle(frame, (width, height), 2, COLORS[idx], 2)
-                y = startY - 15 if startY - 15 > 15 else startY + 15
-                cv2.putText(frame, label, (startX, y),
-                            cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORS[idx], 2)
+
+
+                '''To drop other detections than person uncomment the following and 
+                comment the identical code above idx == 15'''
+                # draw the prediction on the frame
+                # label = "{}: {:.2f}%".format(CLASSES[idx],
+                #                              confidence * 100)
+                # cv2.rectangle(frame, (startX, startY), (endX, endY),
+                #               COLORS[idx], 2)
+                # y = startY - 15 if startY - 15 > 15 else startY + 15
+                # cv2.putText(frame, label, (startX, y),
+                #             cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORS[idx], 2)
 
                 if CLASSES[idx] == 'person':
                     person_counter += 1
