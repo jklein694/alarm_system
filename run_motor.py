@@ -1,6 +1,8 @@
 import RPi.GPIO as GPIO
 from time import sleep
  
+GPIO.setmode(GPIO.BOARD)
+
 Motor1A = 16
 Motor1B = 18
 Motor1E = 22
