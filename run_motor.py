@@ -13,16 +13,16 @@ for _ in range(30):
     GPIO.setup(Motor1E,GPIO.OUT)
     
     print("Going forwards")
-    GPIO.output(Motor1A,GPIO.HIGH)
+    GPIO.output(Motor1A,GPIO.LOW)
     GPIO.output(Motor1B,GPIO.LOW)
-    GPIO.output(Motor1E,GPIO.HIGH)
+    GPIO.output(Motor1E,GPIO.LOW)
     
     sleep(4)
     
     print("Going backwards")
     GPIO.output(Motor1A,GPIO.LOW)
-    GPIO.output(Motor1B,GPIO.HIGH)
-    GPIO.output(Motor1E,GPIO.HIGH)
+    GPIO.output(Motor1B,GPIO.LOW)
+    GPIO.output(Motor1E,GPIO.LOW)
     
     sleep(4)
  
