@@ -7,7 +7,7 @@ Motor1A = 16
 Motor1B = 18
 Motor1E = 22
  
-for _ in range(30):
+for _ in range(2):
     GPIO.setup(Motor1A,GPIO.OUT)
     GPIO.setup(Motor1B,GPIO.OUT)
     GPIO.setup(Motor1E,GPIO.OUT)
