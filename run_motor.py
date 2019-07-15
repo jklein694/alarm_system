@@ -7,31 +7,29 @@ Motor1A = 16
 Motor1B = 18
 Motor1E = 22
  
-for _ in range(2):
+for _ in range(4):
     GPIO.setup(Motor1A,GPIO.OUT)
     GPIO.setup(Motor1B,GPIO.OUT)
     GPIO.setup(Motor1E,GPIO.OUT)
     
     print("Going forwards")
-    GPIO.output(Motor1A,GPIO.HIGH)
+    GPIO.output(Motor1A,GPIO.LOW)
     GPIO.output(Motor1B,GPIO.LOW)
-    GPIO.output(Motor1E,GPIO.HIGH)
+    GPIO.output(Motor1E,GPIO.LOW)
     
-    sleep(4)
+    sleep(4.5)
     
     print("Going backwards")
     GPIO.output(Motor1A,GPIO.LOW)
-    GPIO.output(Motor1B,GPIO.HIGH)
-    GPIO.output(Motor1E,GPIO.HIGH)
+    GPIO.output(Motor1B,GPIO.LOW)
+    GPIO.output(Motor1E,GPIO.LOW)
     
-    sleep(4)
+    sleep(4.5)
  
 print("Now stop")
 GPIO.output(Motor1E,GPIO.LOW)
  
 GPIO.cleanup()
-import RPi.GPIO as GPIO
-import time
 
 GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme
 
